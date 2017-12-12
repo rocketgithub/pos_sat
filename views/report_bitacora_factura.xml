@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_bitacora_factura">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div class="page">
+
+                        <h2>Bitacora de facturas</h2>
+
+                        <h3>Empresa: <span t-field="user.company_id.name"></span></h3>
+                        <h3>NIT: <span t-field="user.company_id.vat"></span></h3>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Serie</th>
+                                    <th>Numero</th>
+                                    <th>Fecha</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="docs" t-as="o">
+                                    <td><span t-field="o.serie"/></td>
+                                    <td><span t-field="o.numero"/></td>
+                                    <td><span t-field="o.date_order"/></td>
+                                    <td><span t-field="o.amount_total"/></td>
+                                    <td><span t-field="o.estado"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

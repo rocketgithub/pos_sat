@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+         <record model="ir.ui.view" id="pos_sat.view_pos_pos_form">
+            <field name="name">pos_sat.view_pos_pos_form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button string="Reprint" type="action" states="paid,done,invoiced" position="replace">
+                    </button>
+                    <field name="session_id" position="replace">
+                        <field name="session_id" required="1" on_change="onchange_session_id(session_id, context)"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="pos_sat_view_pos_order_tree">
+            <field name="name">Facturas</field>
+            <field name="model">pos.order</field>
+            <field name="arch" type="xml">
+                <tree string="POS Orders">
+                    <field name="serie"/>
+                    <field name="numero"/>
+                    <field name="date_order"/>
+                    <field name="amount_total"/>
+                    <field name="estado"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="pos_sat_action_pos_pos_form">
+            <field name="name">Facturas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="pos_sat_view_pos_order_tree"/>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new order.
+              </p>
+              <p>
+                Use this menu to browse your preceeding orders. To record new
+                orders, you should better use the menu <i>Your Session</i> for
+                the touchscreen interface.
+              </p>
+            </field>
+        </record>
+        <menuitem action="pos_sat_action_pos_pos_form" id="pos_sat_order_action" parent="point_of_sale.menu_point_of_sale"/>
+
+    </data>
+</openerp>

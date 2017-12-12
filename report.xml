@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="pos_sat_report_bitacora_factura"
+            model="pos.order"
+            string="Bitacora"
+            report_type="qweb-pdf"
+            name="pos_sat.report_bitacora_factura"
+            file="pos_sat.report_bitacora_factura"
+        />
+
+        <report
+            id="pos_sat_report_bitacora_resolucion"
+            model="pos_sat.resolucion"
+            string="Bitacora"
+            report_type="qweb-pdf"
+            name="pos_sat.report_bitacora_resolucion"
+            file="pos_sat.report_bitacora_resolucion"
+        />
+
+    </data>
+</openerp>

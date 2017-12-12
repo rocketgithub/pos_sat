@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+         <record model="ir.ui.view" id="pos_sat.sequence_view">
+            <field name="name">pos_sat.sequence_view</field>
+            <field name="model">ir.sequence</field>
+            <field name="inherit_id" ref="base.sequence_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="prefix" position="replace">
+                        <field name="prefix" attrs="{'readonly':[('valido','=',True)]}"/>
+                    </field>
+                    <field name="suffix" position="replace">
+                        <field name="suffix" attrs="{'readonly':[('valido','=',True)]}"/>
+                    </field>
+                    <field name="padding" position="replace">
+                        <field name="padding" attrs="{'readonly':[('valido','=',True)]}"/>
+                    </field>
+                    <field name="number_increment" position="replace">
+                        <field name="number_increment" attrs="{'readonly':[('valido','=',True)]}"/>
+                    </field>
+                    <field name="number_next_actual" position="replace">
+                        <field name="number_next_actual" attrs="{'readonly':[('valido','=',True)]}"/>
+                    </field>
+                    <field name="implementation" position="replace">
+                        <field name="implementation" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="resolucion" attrs="{'readonly':[('valido','=',True)]}" on_change="onchange_resolucion(resolucion, context)"/>
+                        <field name="valido"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

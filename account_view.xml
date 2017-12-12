@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+         <record model="ir.ui.view" id="pos_sat.view_account_journal_form">
+            <field name="name">pos_sat.view_account_journal_form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="sequence_id" required="0" position="after">
+                        <field name="resolucion"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <menuitem action="account.action_account_journal_form" id="pos_sat_journal_action" parent="point_of_sale.menu_point_config_product"/>
+
+    </data>
+</openerp>
