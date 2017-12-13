@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
 
         <record id="pos_sat_resolucion_form" model="ir.ui.view">
             <field name="name">pos_sat_resolucion_form</field>
             <field name="model">pos_sat.resolucion</field>
-            <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Resolucion" col="6">
+                <form string="Resolucion">
                     <group>
                         <group>
                             <field name="name" attrs="{'readonly':[('valido','=',True)]}"/>
@@ -56,4 +55,4 @@
         <menuitem action="pos_sat_resolucion_action" id="pos_sat_resolucion_menu" parent="point_of_sale.menu_point_config_product"/>
 
     </data>
-</openerp>
+</odoo>
