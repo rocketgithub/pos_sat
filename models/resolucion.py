@@ -8,7 +8,7 @@ class Resolucion(models.Model):
     _order = 'fecha desc'
 
     name = fields.Char('Numero de resolucion', size=40, required=True),
-    fecha = fields.Date('Fecha de resolucion', required=True, default=fields.Date.context_today(self)),
+    fecha = fields.Date('Fecha de resolucion', required=True, default=fields.Date.context_today()),
     serie = fields.Char('Serie', size=10, required=True),
     direccion = fields.Char('Direccion', required=True),
     inicial = fields.Integer('Del', required=True),
