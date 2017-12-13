@@ -2,7 +2,7 @@
 
 from odoo import api, fields, models, _
 
-class Resolucion(models.Model)):
+class Resolucion(models.Model):
     _name = 'pos_sat.resolucion'
     _description = 'Resolucion de la SAT'
     _order = 'fecha desc'
