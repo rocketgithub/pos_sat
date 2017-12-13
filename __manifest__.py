@@ -9,7 +9,7 @@
     'website': 'http://aquih.com/',
     'depends': ['account', 'point_of_sale'],
     'data': [
-        'view/resolucion_view.xml',
+        'views/resolucion_view.xml',
         # 'account_view.xml',
         # 'point_of_sale_view.xml',
         # 'ir_sequence.xml',
