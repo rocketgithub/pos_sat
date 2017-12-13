@@ -17,7 +17,7 @@ class Resolucion(models.Model):
     valido = fields.Boolean('Valido', readonly=True),
     tipo_doc = fields.Selection([('Factura','Factura')], 'Tipo', required=True),
     fecha_ingreso = fields.Date('Fecha de ingreso', required=True, readonly=True),
-    fecha_vencimiento = fields.date('Fecha de vencimiento', readonly=True),
+    fecha_vencimiento = fields.Date('Fecha de vencimiento', readonly=True),
 
     # @api.one
     # @api.constrains('fecha_ingreso')
