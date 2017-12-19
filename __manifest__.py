@@ -10,7 +10,7 @@
     'depends': ['account', 'point_of_sale'],
     'data': [
         'views/resolucion_view.xml',
-        # 'account_view.xml',
+        'views/account_view.xml',
         # 'point_of_sale_view.xml',
         # 'ir_sequence.xml',
         # 'report.xml',

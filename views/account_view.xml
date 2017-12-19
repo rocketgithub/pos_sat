@@ -2,14 +2,14 @@
 <openerp>
     <data>
 
-         <record model="ir.ui.view" id="pos_sat.view_account_journal_form">
-            <field name="name">pos_sat.view_account_journal_form</field>
+         <record model="ir.ui.view" id="view_account_journal_form_pos_sat">
+            <field name="name">view_account_journal_form_pos_sat</field>
             <field name="model">account.journal</field>
             <field name="inherit_id" ref="account.view_account_journal_form"/>
             <field name="arch" type="xml">
                 <data>
-                    <field name="sequence_id" required="0" position="after">
-                        <field name="resolucion"/>
+                    <field name="code" required="0" position="after">
+                        <field name="resolucion_id"/>
                     </field>
                 </data>
             </field>
