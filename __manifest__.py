@@ -11,8 +11,8 @@
     'data': [
         'views/resolucion_view.xml',
         'views/account_view.xml',
+        'views/ir_sequence.xml',
         # 'point_of_sale_view.xml',
-        # 'ir_sequence.xml',
         # 'report.xml',
         # 'views/report_bitacora_factura.xml',
         # 'views/report_bitacora_resolucion.xml',

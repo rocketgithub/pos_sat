@@ -6,7 +6,7 @@ from odoo.exceptions import UserError, ValidationError
 class AccountJournal(models.Model):
     _inherit = "account.journal"
 
-    resolucion_id = fields.Many2one('pos_sat.resolucion', string='Resolucion', readonly=True, related='sequence_id.resolucion')
+    resolucion_id = fields.Many2one('pos_sat.resolucion', string='Resolucion', readonly=True, related='sequence_id.resolucion_id')
 
     # _columns = {
     #     'name': fields.char('Nombre', size=40, required=True),
