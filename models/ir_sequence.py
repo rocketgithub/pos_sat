@@ -11,7 +11,7 @@ class IrSequence(models.Model):
 
     @api.onchange('resolucion_id')
     def onchange_resolucion(self):
-        if self.resolucion:
+        if self.resolucion_id:
             self.prefix = r.serie+'-',
             self.suffix = '',
             self.padding = 8,
