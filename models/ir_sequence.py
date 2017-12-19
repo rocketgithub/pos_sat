@@ -12,10 +12,10 @@ class IrSequence(models.Model):
     @api.onchange('resolucion_id')
     def onchange_resolucion(self):
         if self.resolucion_id:
-            self.prefix = self.resolucion_id.serie+'-',
-            self.suffix = '',
-            self.padding = 8,
-            self.number_increment = 1,
+            self.prefix = self.resolucion_id.serie+'-'
+            self.suffix = ''
+            self.padding = 8
+            self.number_increment = 1
             self.number_next_actual = self.resolucion_id.inicial
 
     def create(self, vals):
