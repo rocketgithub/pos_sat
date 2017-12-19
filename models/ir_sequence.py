@@ -20,7 +20,7 @@ class IrSequence(models.Model):
 
     def create(self, vals):
         if vals.get('resolucion_id', False):
-            r = self.env['pos_sat.resolucion'].browse(cr, uid, vals['resolucion_id'], context=context)
+            r = self.env['pos_sat.resolucion'].browse(vals['resolucion_id'])
             vals.update({
                 'prefix': r.serie+'-',
                 'suffix': '',
@@ -33,7 +33,7 @@ class IrSequence(models.Model):
 
     def write(self, vals):
         if vals.get('resolucion_id', False):
-            r = self.env['pos_sat.resolucion'].browse(cr, uid, vals['resolucion_id'], context=context)
+            r = self.env['pos_sat.resolucion'].browse(vals['resolucion_id'])
             vals.update({
                 'prefix': r.serie+'-',
                 'suffix': '',
