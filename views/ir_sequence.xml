@@ -25,7 +25,7 @@
                     </field> -->
                     <field name="implementation" position="replace">
                         <!-- <field name="implementation" attrs="{'readonly':[('valido','=',True)]}"/> -->
-                        <field name="resolucion" attrs="{'readonly':[('valido','=',True)]}" on_change="onchange_resolucion(resolucion, context)"/>
+                        <field name="resolucion_id" attrs="{'readonly':[('valido','=',True)]}" on_change="onchange_resolucion(resolucion, context)"/>
                         <field name="valido"/>
                     </field>
                 </data>
