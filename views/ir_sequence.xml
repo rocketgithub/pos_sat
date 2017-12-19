@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="base.sequence_view"/>
             <field name="arch" type="xml">
                 <data>
-                    <!-- <field name="prefix" position="replace">
+                    <field name="prefix" position="replace">
                         <field name="prefix" attrs="{'readonly':[('valido','=',True)]}"/>
                     </field>
                     <field name="suffix" position="replace">
@@ -22,10 +22,10 @@
                     </field>
                     <field name="number_next_actual" position="replace">
                         <field name="number_next_actual" attrs="{'readonly':[('valido','=',True)]}"/>
-                    </field> -->
+                    </field>
                     <field name="implementation" position="replace">
-                        <!-- <field name="implementation" attrs="{'readonly':[('valido','=',True)]}"/> -->
-                        <field name="resolucion_id" attrs="{'readonly':[('valido','=',True)]}" on_change="onchange_resolucion(resolucion, context)"/>
+                        <field name="implementation" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="resolucion_id" attrs="{'readonly':[('valido','=',True)]}"/>
                         <field name="valido"/>
                     </field>
                 </data>

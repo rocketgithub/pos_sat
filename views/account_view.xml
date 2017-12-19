@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
          <record model="ir.ui.view" id="view_account_journal_form_pos_sat">
             <field name="name">view_account_journal_form_pos_sat</field>
             <field name="model">account.journal</field>
@@ -16,6 +15,5 @@
         </record>
 
         <menuitem action="account.action_account_journal_form" id="pos_sat_journal_action" parent="point_of_sale.menu_point_config_product"/>
-
     </data>
 </odoo>

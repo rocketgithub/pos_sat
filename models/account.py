@@ -8,11 +8,6 @@ class AccountJournal(models.Model):
 
     resolucion_id = fields.Many2one('pos_sat.resolucion', string='Resolucion', readonly=True, related='sequence_id.resolucion_id')
 
-    # _columns = {
-    #     'name': fields.char('Nombre', size=40, required=True),
-    #     'resolucion': fields.related('sequence_id', 'resolucion', type='many2one', relation='pos_sat.resolucion', string='Resolucion', readonly=True),
-    # }
-
 # class account_move(osv.osv):
 #     _inherit = "account.move"
 #
