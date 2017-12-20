@@ -2,6 +2,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+from datetime import datetime
 
 class PosSession(models.Model):
     _inherit = "pos.session"
@@ -13,6 +14,9 @@ class PosSession(models.Model):
             if config.journal_id and config.journal_id.resolucion_id:
                 if config.journal_id.sequence_id.number_next_actual > config.journal_id.resolucion_id.final:
                     raise ValidationError('Ya no quedan facturas en esta resolución, no puede abrir la sesión hasta ingresar una nueva resoución.')
+                if config.journal_id.resolucion_id.fecha_vencimiento < datetime.today().strftime('%Y-%m-%d'):
+                    raise ValidationError('La resolución se ha vencido, no puede abrir la sesión hasta ingresar una nueva resoución.')
+
         return super(PosSession, self).create(vals)
 
 # class pos_order(osv.osv):
