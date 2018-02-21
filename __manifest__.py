@@ -7,15 +7,19 @@
     'description': """ POS con cambios para cumplir con la SAT """,
     'author': 'Rodrigo Fernandez',
     'website': 'http://aquih.com/',
-    'depends': ['account', 'point_of_sale'],
+    'depends': ['account', 'point_of_sale', 'pos_gt'],
     'data': [
         'views/resolucion_view.xml',
         'views/account_view.xml',
         'views/ir_sequence.xml',
-        # 'point_of_sale_view.xml',
-        # 'report.xml',
-        # 'views/report_bitacora_factura.xml',
-        # 'views/report_bitacora_resolucion.xml',
+        # 'views/point_of_sale_view.xml',
+        'views/report.xml',
+        'views/report_bitacora_factura.xml',
+        'views/report_bitacora_resolucion.xml',
+        'views/templates.xml',
+    ],
+    'qweb': [
+        'static/src/xml/pos_sat.xml',
     ],
     'installable': True
 }

@@ -9,24 +9,23 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="prefix" position="replace">
-                        <field name="prefix" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="prefix" attrs="{'readonly':[('resolucion_id','!=',False)]}"/>
                     </field>
                     <field name="suffix" position="replace">
-                        <field name="suffix" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="suffix" attrs="{'readonly':[('resolucion_id','!=',False)]}"/>
                     </field>
                     <field name="padding" position="replace">
-                        <field name="padding" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="padding" attrs="{'readonly':[('resolucion_id','!=',False)]}"/>
                     </field>
                     <field name="number_increment" position="replace">
-                        <field name="number_increment" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="number_increment" attrs="{'readonly':[('resolucion_id','!=',False)]}"/>
                     </field>
                     <field name="number_next_actual" position="replace">
-                        <field name="number_next_actual" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="number_next_actual" attrs="{'readonly':[('resolucion_id','!=',False)]}"/>
                     </field>
                     <field name="implementation" position="replace">
-                        <field name="implementation" attrs="{'readonly':[('valido','=',True)]}"/>
+                        <field name="implementation" attrs="{'readonly':[('resolucion_id','!=',False)]}"/>
                         <field name="resolucion_id"/>
-                        <field name="valido"/>
                     </field>
                 </data>
             </field>

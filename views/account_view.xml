@@ -9,6 +9,7 @@
                 <data>
                     <field name="code" required="0" position="after">
                         <field name="resolucion_id"/>
+                        <field name="ultimo_numero_factura" readonly="True"/>
                     </field>
                 </data>
             </field>

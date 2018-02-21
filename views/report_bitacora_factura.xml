@@ -15,19 +15,19 @@
                             <thead>
                                 <tr>
                                     <th>Serie</th>
-                                    <th>Numero</th>
+                                    <th class="text-right">Numero</th>
                                     <th>Fecha</th>
-                                    <th>Total</th>
+                                    <th class="text-right">Total</th>
                                     <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr t-foreach="docs" t-as="o">
-                                    <td><span t-field="o.serie"/></td>
-                                    <td><span t-field="o.numero"/></td>
+                                    <td><span t-field="o.sale_journal.serie_resolucion"/></td>
+                                    <td class="text-right"><span t-field="o.numero_factura_impreso"/></td>
                                     <td><span t-field="o.date_order"/></td>
-                                    <td><span t-field="o.amount_total"/></td>
-                                    <td><span t-field="o.estado"/></td>
+                                    <td class="text-right"><span t-field="o.amount_total"/></td>
+                                    <td><span t-esc="'Emitido'"/></td>
                                 </tr>
                             </tbody>
                         </table>
