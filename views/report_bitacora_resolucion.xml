@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
                                     <th>Numero</th>
-                                    <th>Fecha</th>
+                                    <th>Fecha autorización</th>
                                     <th>Serie</th>
                                     <th class="text-right">Del</th>
                                     <th class="text-right">Al</th>

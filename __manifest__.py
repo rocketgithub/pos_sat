@@ -12,7 +12,6 @@
         'views/resolucion_view.xml',
         'views/account_view.xml',
         'views/ir_sequence.xml',
-        # 'views/point_of_sale_view.xml',
         'views/report.xml',
         'views/report_bitacora_factura.xml',
         'views/report_bitacora_resolucion.xml',

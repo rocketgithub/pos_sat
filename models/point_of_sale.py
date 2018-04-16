@@ -13,6 +13,8 @@ class PosSession(models.Model):
     def create(self, vals):
         if vals.get('config_id', False):
             config = self.env['pos.config'].browse(vals['config_id'])
+            if config.journal_id.requiere_resolucion and not config.journal_id.resolucion_id:
+                    raise ValidationError('No puede abrir la sesión por que no tiene una resolución ingresada.')
             if config.journal_id and config.journal_id.resolucion_id:
                 if config.journal_id.ultimo_numero_factura > config.journal_id.resolucion_id.final:
                     raise ValidationError('Ya no quedan facturas en esta resolución, no puede abrir la sesión hasta ingresar una nueva resoución.')

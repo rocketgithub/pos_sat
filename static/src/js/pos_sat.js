@@ -25,26 +25,34 @@ models.PosModel = models.PosModel.extend({
     add_new_order: function(){
         console.log(this);
         var posmodel = this;
-        var total_documentos = this.sale_journal.final_resolucion - this.sale_journal.inicial_resolucion;
-        var restantes = this.sale_journal.final_resolucion - this.config.ultimo_numero_factura;
-        if (this.config.ultimo_numero_factura >= this.sale_journal.final_resolucion) {
+        if (this.sale_journal.requiere_resolucion && !this.sale_journal.resolucion_id) {
             this.gui.show_popup("error",{
-                "title": "Número de factura",
-                "body":  "Ya no existen números de factura para esta serie, por lo cual ya no puede realizar ventas. Por favor pida que le habiliten una nueva serie.",
+                "title": "Resolución",
+                "body":  "No puede abrir la sesión por que no tiene una resolución ingresada.",
             });
             return;
-        } else if (restantes / total_documentos <= 0.25) {
-            this.gui.show_popup("confirm",{
-                "title": "Número de factura",
-                "body":  "Ya solo queda el 25% de números de facturas para esta serie. Por favor avise para que le habiliten una nueva serie pronto.",
-                "confirm": function() {
-                    var result = _super_posmodel.add_new_order.apply(posmodel);
-                    return result;
-                },
-            });
-        } else {
-            var result = _super_posmodel.add_new_order.apply(posmodel);
-            return result;
+        } else if (this.sale_journal.requiere_resolucion && this.sale_journal.resolucion_id) {
+            var total_documentos = this.sale_journal.final_resolucion - this.sale_journal.inicial_resolucion + 1;
+            var restantes = this.sale_journal.final_resolucion - this.config.ultimo_numero_factura;
+            if (this.config.ultimo_numero_factura >= this.sale_journal.final_resolucion) {
+                this.gui.show_popup("error",{
+                    "title": "Número de factura",
+                    "body":  "Ya no existen números de factura para esta serie, por lo cual ya no puede realizar ventas. Por favor pida que le habiliten una nueva serie.",
+                });
+                return;
+            } else if (restantes / total_documentos <= 0.25) {
+                this.gui.show_popup("confirm",{
+                    "title": "Número de factura",
+                    "body":  "Ya solo queda el 25% de números de facturas para esta serie. Por favor avise para que le habiliten una nueva serie pronto.",
+                    "confirm": function() {
+                        var result = _super_posmodel.add_new_order.apply(posmodel);
+                        return result;
+                    },
+                });
+            } else {
+                var result = _super_posmodel.add_new_order.apply(posmodel);
+                return result;
+            }
         }
     },
 })

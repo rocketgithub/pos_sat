@@ -4,6 +4,8 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from datetime import datetime
 
+import logging
+
 class Resolucion(models.Model):
     _name = 'pos_sat.resolucion'
     _description = 'Resolucion de la SAT'
@@ -20,6 +22,13 @@ class Resolucion(models.Model):
     tipo_doc = fields.Selection([('Factura','Factura')], 'Tipo', required=True)
     fecha_ingreso = fields.Date('Fecha de ingreso', required=True, readonly=True, default=lambda self: fields.Date.context_today(self))
     fecha_vencimiento = fields.Date('Fecha de vencimiento', readonly=True)
+
+    @api.one
+    @api.constrains('name')
+    def _revisar_name(self):
+        r = self.search([('name','=',self.name)], order="final desc")
+        if len(r) > 1:
+            raise ValidationError('El numero de resolució ya existe en el sistema.')
 
     @api.one
     @api.constrains('fecha_ingreso')
