@@ -6,24 +6,18 @@ var screens = require('point_of_sale.screens');
 
 var _super_posmodel = models.PosModel.prototype;
 models.PosModel = models.PosModel.extend({
-    after_load_server_data: function(){
+    load_orders: function() {
+        var result = _super_posmodel.load_orders.apply(this, arguments);
+
         this.config.ultimo_numero_factura = 0;
         if (parseInt(this.sale_journal.ultimo_numero_factura)) {
             this.config.ultimo_numero_factura = parseInt(this.sale_journal.ultimo_numero_factura);
         }
-        console.log(this.config.ultimo_numero_factura);
-    },
-    push_and_invoice_order: function(order){
-        if (!('numero_factura_impreso' in order)) {
-            this.config.ultimo_numero_factura += 1;
-            console.log(this.config.ultimo_numero_factura);
-            order.numero_factura_impreso = this.config.ultimo_numero_factura;
-        }
-        var result = _super_posmodel.push_and_invoice_order.apply(this, arguments);
+
         return result;
     },
+
     add_new_order: function(){
-        console.log(this);
         var posmodel = this;
         if (this.sale_journal.requiere_resolucion && !this.sale_journal.resolucion_id) {
             this.gui.show_popup("error",{
@@ -53,7 +47,19 @@ models.PosModel = models.PosModel.extend({
                 var result = _super_posmodel.add_new_order.apply(posmodel);
                 return result;
             }
+        } else {
+            console.log('else');
+            var result = _super_posmodel.add_new_order.apply(posmodel);
         }
+    },
+
+    push_and_invoice_order: function(order){
+        if (!('numero_factura_impreso' in order)) {
+            this.config.ultimo_numero_factura += 1;
+            order.numero_factura_impreso = this.config.ultimo_numero_factura;
+        }
+        var result = _super_posmodel.push_and_invoice_order.apply(this, arguments);
+        return result;
     },
 })
 
@@ -66,12 +72,11 @@ models.Order = models.Order.extend({
     }
 })
 
-var _super_receipt = screens.ReceiptScreenWidget.prototype;
-screens.ReceiptScreenWidget.include({
-    handle_auto_print: function(){
-        this.print_web();
-    }
-})
-
+// var _super_receipt = screens.ReceiptScreenWidget.prototype;
+// screens.ReceiptScreenWidget.include({
+//     handle_auto_print: function(){
+//         this.print_web();
+//     }
+// })
 
 });

@@ -16,6 +16,7 @@
         'views/report_bitacora_factura.xml',
         'views/report_bitacora_resolucion.xml',
         'views/templates.xml',
+        'security/ir.model.access.csv',
     ],
     'qweb': [
         'static/src/xml/pos_sat.xml',
