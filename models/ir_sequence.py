@@ -44,6 +44,6 @@ class IrSequence(models.Model):
                 'number_next_actual': r.inicial,
                 'use_date_range': False
             })
-        for diario in self.env['account.journal'].search([('sequence_id','=',self.id)]):
-            diario.ultimo_numero_factura = self.resolucion_id.inicial - 1
+            for diario in self.env['account.journal'].search([('sequence_id','=',self.id)]):
+                diario.ultimo_numero_factura = self.resolucion_id.inicial - 1
         return super(IrSequence, self).write(vals)

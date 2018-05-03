@@ -50,11 +50,12 @@ models.PosModel = models.PosModel.extend({
         } else {
             console.log('else');
             var result = _super_posmodel.add_new_order.apply(posmodel);
+            return result;
         }
     },
 
     push_and_invoice_order: function(order){
-        if (!('numero_factura_impreso' in order)) {
+        if (this.sale_journal.requiere_resolucion && !('numero_factura_impreso' in order)) {
             this.config.ultimo_numero_factura += 1;
             order.numero_factura_impreso = this.config.ultimo_numero_factura;
         }
@@ -67,7 +68,9 @@ var _super_order = models.Order.prototype;
 models.Order = models.Order.extend({
     export_as_JSON: function(){
         var json = _super_order.export_as_JSON.apply(this);
-        json['numero_factura_impreso'] = this.numero_factura_impreso;
+        if (this.pos.sale_journal.requiere_resolucion) {
+            json['numero_factura_impreso'] = this.numero_factura_impreso;
+        }
         return json;
     }
 })
