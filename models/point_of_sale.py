@@ -31,14 +31,14 @@ class PosOrder(models.Model):
     @api.model
     def _order_fields(self, ui_order):
         fields = super(PosOrder, self)._order_fields(ui_order)
-        if self.sale_journal.requiere_resolucion and 'numero_factura_impreso' in ui_order:
+        if 'numero_factura_impreso' in ui_order:
             fields['numero_factura_impreso'] = ui_order['numero_factura_impreso']
         return fields
 
     @api.model
     def _process_order(self, pos_order):
         order = super(PosOrder, self)._process_order(pos_order)
-        if self.sale_journal.requiere_resolucion and order.numero_factura_impreso and order.numero_factura_impreso > order.sale_journal.ultimo_numero_factura:
+        if order.sale_journal.requiere_resolucion and order.numero_factura_impreso and order.numero_factura_impreso > order.sale_journal.ultimo_numero_factura:
             order.sale_journal.ultimo_numero_factura = order.numero_factura_impreso
         return order
 
