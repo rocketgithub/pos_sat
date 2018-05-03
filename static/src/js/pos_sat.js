@@ -48,7 +48,6 @@ models.PosModel = models.PosModel.extend({
                 return result;
             }
         } else {
-            console.log('else');
             var result = _super_posmodel.add_new_order.apply(posmodel);
         }
     },
