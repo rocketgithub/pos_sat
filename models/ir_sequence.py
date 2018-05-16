@@ -30,7 +30,7 @@ class IrSequence(models.Model):
                 'use_date_range': False,
             })
         for diario in self.env['account.journal'].search([('sequence_id','=',self.id)]):
-            diario.ultimo_numero_factura = self.resolucion_id.inicial - 1
+            diario.ultimo_numero_factura = r.inicial - 1
         return super(IrSequence, self).create(vals)
 
     def write(self, vals):
@@ -45,5 +45,5 @@ class IrSequence(models.Model):
                 'use_date_range': False
             })
             for diario in self.env['account.journal'].search([('sequence_id','=',self.id)]):
-                diario.ultimo_numero_factura = self.resolucion_id.inicial - 1
+                diario.ultimo_numero_factura = r.inicial - 1
         return super(IrSequence, self).write(vals)
