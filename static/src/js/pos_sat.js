@@ -66,11 +66,25 @@ models.PosModel = models.PosModel.extend({
 var _super_order = models.Order.prototype;
 models.Order = models.Order.extend({
     export_as_JSON: function(){
-        var json = _super_order.export_as_JSON.apply(this);
+        var json = _super_order.export_as_JSON.apply(this, arguments);
         if (this.pos.sale_journal.requiere_resolucion) {
             json['numero_factura_impreso'] = this.numero_factura_impreso;
         }
         return json;
+    }
+})
+
+var _super_payment = screens.PaymentScreenWidget.prototype;
+screens.PaymentScreenWidget.include({
+    validate_order: function(force_validation){
+        var order = this.pos.get_order();
+        if (this.pos.sale_journal.requiere_resolucion && !('numero_factura_impreso' in order)) {
+            this.pos.config.ultimo_numero_factura += 1;
+            order.numero_factura_impreso = this.pos.config.ultimo_numero_factura;
+        }
+        if (this.order_is_valid(force_validation)) {
+            this.finalize_validation();
+        }
     }
 })
 
