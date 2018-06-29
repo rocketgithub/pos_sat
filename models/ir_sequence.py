@@ -2,6 +2,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+import logging
 
 class IrSequence(models.Model):
     _inherit = "ir.sequence"
@@ -35,15 +36,16 @@ class IrSequence(models.Model):
 
     def write(self, vals):
         if vals.get('resolucion_id', False):
-            r = self.env['pos_sat.resolucion'].browse(vals['resolucion_id'])
-            vals.update({
-                'prefix': r.serie+'-',
-                'suffix': '',
-                'padding': 8,
-                'number_increment': 1,
-                'number_next_actual': r.inicial,
-                'use_date_range': False
-            })
-            for diario in self.env['account.journal'].search([('sequence_id','=',self.id)]):
-                diario.ultimo_numero_factura = r.inicial - 1
+            if vals['resolucion_id'] != self.resolucion_id.id:
+                r = self.env['pos_sat.resolucion'].browse(vals['resolucion_id'])
+                vals.update({
+                    'prefix': r.serie+'-',
+                    'suffix': '',
+                    'padding': 8,
+                    'number_increment': 1,
+                    'number_next_actual': r.inicial,
+                    'use_date_range': False
+                })
+                for diario in self.env['account.journal'].search([('sequence_id','=',self.id)]):
+                    diario.ultimo_numero_factura = r.inicial - 1
         return super(IrSequence, self).write(vals)
