@@ -2,8 +2,8 @@
 <openerp>
     <data>
         <template id="report_bitacora_resolucion">
-            <t t-call="report.html_container">
-                <t t-call="report.external_layout">
+            <t t-call="web.html_container">
+                <div class="article">
                     <div class="page">
 
                         <h2>Bitacora de sesiones</h2>
@@ -21,7 +21,7 @@
                                     <th class="text-right">Al</th>
                                     <th>Fecha de ingreso</th>
                                     <th>Tipo</th>
-                                    <th>Fecha de vencimiento</th>
+                                    <th>Vigente hasta</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,7 +39,7 @@
                         </table>
 
                     </div>
-                </t>
+                </div>
             </t>
         </template>
 

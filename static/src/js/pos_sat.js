@@ -88,11 +88,95 @@ screens.PaymentScreenWidget.include({
     }
 })
 
-// var _super_receipt = screens.ReceiptScreenWidget.prototype;
-// screens.ReceiptScreenWidget.include({
-//     handle_auto_print: function(){
-//         this.print_web();
-//     }
-// })
+//screens.ReceiptScreenWidget.include({
+//    print_web: function(){
+//        var widget = this;
+//        var order = this.pos.get_order();
+//        var receipt = order.export_for_printing();
+//        var orderlines = order.get_orderlines();
+//        var paymentlines = order.get_paymentlines();
+//
+//        var serie = widget.pos.sale_journal.serie_resolucion;
+//        var resolucion = widget.pos.sale_journal.name_resolucion;
+//        var del = widget.pos.sale_journal.inicial_resolucion;
+//        var al = widget.pos.sale_journal.final_resolucion;
+//        var fecha = widget.pos.sale_journal.fecha_resolucion;
+//        var direccion = widget.pos.sale_journal.direccion_resolucion;
+//
+//        var ticket = order.name+"<BR>";
+//        ticket += widget.pos.config.name+"<BR>";
+//        ticket += widget.pos.company.name+"<BR>";
+//        if (receipt.header) {
+//            ticket += receipt.header+"<BR>";
+//        }
+//        ticket += direccion+"<BR>";
+//        ticket += "NIT: "+widget.pos.company.vat+"<BR>";
+//        ticket += "Serie: "+serie+"<BR>";
+//        ticket += "Resolución: "+resolucion+"<BR>";
+//        ticket += "Del: "+del+" al: "+al+"<BR>";
+//        ticket += "Fecha Resolución: "+moment(fecha).format('L')+"<BR>";
+//        ticket += "Vigente hasta: "+moment(widget.pos.sale_journal.fecha_vencimiento_resolucion).format('L')+"<BR>";
+//        ticket += "-ORIGINAL-<BR>";
+//        ticket += "Factura No.: "+serie+"-"+order.numero_factura_impreso+"<BR><BR>";
+//        ticket += "Fecha: "+moment(order.creation_date).format('L LT')+"<BR>";
+//        ticket += "Usuario: "+(widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name)+"<BR>";
+//        if (order.tag_number) {
+//            ticket += "Etiqueta: "+order.tag_number+"<BR>";
+//        }
+//        if (order.take_out) {
+//            ticket += "Para llevar<BR>";
+//        }
+//        if (order.get_client().vat && (order.get_client().vat == 'CF' || order.get_client().vat == 'C/F')) {
+//            ticket += "NIT: _________________________<BR>";
+//            ticket += "Nombre: ______________________<BR>";
+//        } else {
+//            ticket += "NIT: "+(order.get_client().vat ? order.get_client().vat : '')+"<BR>";
+//            ticket += "Nombre: "+order.get_client().name+"<BR>";
+//        }
+//        ticket += "Cant    Producto    Precio<BR>";
+//        orderlines.forEach(function(orderline) {
+//            ticket += orderline.get_quantity_str_with_unit()+"    "+orderline.get_product().display_name+"    "+widget.format_currency(orderline.get_display_price())+"<BR>";
+//        })
+//        ticket += "Total: "+widget.format_currency(order.get_total_with_tax())+"<BR>";
+//        paymentlines.forEach(function(line) {
+//            ticket += line.name+": "+widget.format_currency(line.get_amount())+"<BR>";
+//        })
+//        ticket += "Cambio: "+widget.format_currency(order.get_change())+"<BR>";
+//        ticket += "Sujeto a pagos trimestrales<BR>";
+//        if (receipt.footer) {
+//            ticket += receipt.footer+"<BR>";
+//        }
+//        ticket += "<BR><BR>-<BR><BR>-<BR><BR><CUT><BR><BR>-<BR><BR><BR>-<BR><BR>-<BR><BR>";
+//
+//        var comanda = order.name+"<BR>";
+//        comanda += widget.pos.config.name+"<BR>";
+//        if (order.tag_number) {
+//            comanda += "Etiqueta: "+order.tag_number+"<BR>";
+//        }
+//        if (order.take_out) {
+//            comanda += "Para llevar<BR>";
+//        }
+//        comanda += "Fecha: "+moment(order.creation_date).format('L LT')+"<BR>";
+//        comanda += "Usuario: "+(widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name)+"<BR>";
+//        comanda += "Cant    Producto<BR>";
+//        orderlines.forEach(function(orderline) {
+//            comanda += orderline.get_quantity_str_with_unit()+"    "+orderline.get_product().display_name+"<BR>";
+//        })
+//        comanda += "<BR><BR>-<BR><BR>-<BR><BR><CUT><BR><BR>-<BR><BR><BR>-<BR><BR>-<BR><BR>";
+//
+//        var textoTicket = "";
+//        textoTicket += encodeURI(ticket);
+//        textoTicket += encodeURI(ticket.replace(/-ORIGINAL-/, '-COPIA-'));
+//        textoTicket += encodeURI(comanda);
+//        window.location.href="intent://"+textoTicket+"#Intent;scheme=quickprinter;package=pe.diegoveloper.printerserverapp;end;";
+//    }
+//})
+
+//var _super_receipt = screens.ReceiptScreenWidget.prototype;
+//screens.ReceiptScreenWidget.include({
+// handle_auto_print: function(){
+//     this.print_web();
+// }
+//})
 
 });
