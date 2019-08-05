@@ -71,7 +71,7 @@
                             <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
                         </td>
                         <td class="pos-right-align">
-                            ---
+                            
                         </td>
                     </tr>
                 </table>
@@ -91,7 +91,7 @@
                                 <t t-esc="widget.format_currency(line.get_amount())"/>
                             </td>
                             <td class="pos-right-align">
-                                ---
+                                
                             </td>
                         </tr>
                     </t>
@@ -109,7 +109,7 @@
                             <t t-esc="widget.format_currency(order.get_change())"/>
                         </td>
                         <td class="pos-right-align">
-                            --
+                            
                         </td>
                     </tr>
                 </table>
