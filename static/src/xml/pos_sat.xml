@@ -54,7 +54,7 @@
                             <t t-esc="widget.format_currency(orderline.get_display_price())"/>
                         </td>
                         <td class="pos-right-align">
-                            ---
+                            
                         </td>
                     </tr>
                 </table>
