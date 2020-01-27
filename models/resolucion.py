@@ -61,7 +61,7 @@ class Resolucion(models.Model):
             raise ValidationError('Ya existe otra resolución con esta serie y en el mismo rango')
 
     @api.model
-    def create(self, vals):
+    def create_old(self, vals):
         vals.update({'valido': True})
         anio = vals['fecha'][0:4]
         resto = vals['fecha'][4:]
