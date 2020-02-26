@@ -19,6 +19,7 @@ class IrSequence(models.Model):
             self.number_next_actual = self.resolucion_id.inicial
             self.use_date_range = False
 
+    @api.model
     def create(self, vals):
         if vals.get('resolucion_id', False):
             r = self.env['pos_sat.resolucion'].browse(vals['resolucion_id'])
@@ -34,6 +35,7 @@ class IrSequence(models.Model):
             diario.ultimo_numero_factura = r.inicial - 1
         return super(IrSequence, self).create(vals)
 
+    @api.multi
     def write(self, vals):
         if vals.get('resolucion_id', False):
             if vals['resolucion_id'] != self.resolucion_id.id:
