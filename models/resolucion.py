@@ -33,8 +33,8 @@ class Resolucion(models.Model):
     @api.one
     @api.constrains('fecha_ingreso')
     def _revisar_fecha(self):
-        f = datetime.strptime(self.fecha, '%Y-%m-%d')
-        fi = datetime.strptime(self.fecha_ingreso, '%Y-%m-%d')
+        f = datetime.strptime(str(self.fecha), '%Y-%m-%d')
+        fi = datetime.strptime(str(self.fecha_ingreso), '%Y-%m-%d')
         if (fi - f).days > 10:
             raise ValidationError('La fecha de ingreso no debe de ser mayor a 10 dias de la fecha de la resolucion')
 
