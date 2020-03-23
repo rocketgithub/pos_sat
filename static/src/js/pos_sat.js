@@ -35,14 +35,16 @@ models.PosModel = models.PosModel.extend({
                 });
                 return;
             } else if (restantes / total_documentos <= 0.25) {
-                this.gui.show_popup("confirm",{
-                    "title": "Número de factura",
-                    "body":  "Ya solo queda el 25% de números de facturas para esta serie. Por favor avise para que le habiliten una nueva serie pronto.",
-                    "confirm": function() {
-                        var result = _super_posmodel.add_new_order.apply(posmodel);
-                        return result;
-                    },
-                });
+                // this.gui.show_popup("confirm",{
+                //     "title": "Número de factura",
+                //     "body":  "Ya solo queda el 25% de números de facturas para esta serie. Por favor avise para que le habiliten una nueva serie pronto.",
+                //     "confirm": function() {
+                //         var result = _super_posmodel.add_new_order.apply(posmodel);
+                //         return result;
+                //     },
+                // });
+                var result = _super_posmodel.add_new_order.apply(posmodel);
+                return result;
             } else {
                 var result = _super_posmodel.add_new_order.apply(posmodel);
                 return result;
