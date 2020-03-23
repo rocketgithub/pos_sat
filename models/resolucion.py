@@ -41,9 +41,9 @@ class Resolucion(models.Model):
     @api.one
     @api.constrains('inicial','final')
     def _revisar_rango(self):
-        ant = self.search([('serie','=',self.serie),('id','!=',self.id)], order="final desc")
+        ant = self.search([('serie','=',self.serie),('final','<',self.final)], order="final asc")
         if len(ant) > 0:
-            if self.inicial != ant[0].final + 1:
+            if self.inicial != ant[-1].final + 1:
                 raise ValidationError('El número inicial de esta resolución no es el final + 1 de la resolución anterior de la misma serie')
         else:
             if self.inicial != 1:
