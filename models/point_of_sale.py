@@ -18,7 +18,7 @@ class PosSession(models.Model):
             if config.invoice_journal_id and config.invoice_journal_id.resolucion_id:
                 if config.invoice_journal_id.ultimo_numero_factura > config.invoice_journal_id.resolucion_id.final:
                     raise ValidationError('Ya no quedan facturas en esta resolución, no puede abrir la sesión hasta ingresar una nueva resoución.')
-                if config.invoice_journal_id.resolucion_id.fecha_vencimiento < datetime.today().strftime('%Y-%m-%d'):
+                if str(config.invoice_journal_id.resolucion_id.fecha_vencimiento) < datetime.today().strftime('%Y-%m-%d'):
                     raise ValidationError('La resolución se ha vencido, no puede abrir la sesión hasta ingresar una nueva resoución.')
 
         return super(PosSession, self).create(vals)
