@@ -10,7 +10,7 @@
                     <field name="code" required="0" position="after">
                         <field name="requiere_resolucion"/>
                         <field name="resolucion_id"/>
-                        <field name="ultimo_numero_factura" readonly="True"/>
+                        <field name="ultimo_numero_factura"/>
                     </field>
                 </data>
             </field>
