@@ -39,7 +39,7 @@ class PosOrder(models.Model):
     def _process_order(self, pos_order):
         order = super(PosOrder, self)._process_order(pos_order)
         if order.config_id.invoice_journal_id.requiere_resolucion and order.numero_factura_impreso and order.numero_factura_impreso > order.config_id.invoice_journal_id.ultimo_numero_factura:
-            order.config_id.invoice_journal_id.ultimo_numero_factura = order.numero_factura_impreso
+            order.config_id.invoice_journal_id.sudo().write({'ultimo_numero_factura': order.numero_factura_impreso})
         return order
 
     @api.model
