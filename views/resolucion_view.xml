@@ -12,7 +12,7 @@
                             <field name="name" attrs="{'readonly':[('valido','=',True)]}"/>
                             <field name="fecha" attrs="{'readonly':[('valido','=',True)]}"/>
                             <field name="fecha_ingreso" attrs="{'readonly':[('valido','=',True)]}"/>
-                            <field name="fecha_vencimiento" attrs="{'readonly':[('valido','=',True)]}"/>
+                            <field name="fecha_vencimiento"/>
                             <field name="direccion" attrs="{'readonly':[('valido','=',True)]}"/>
                         </group>
                         <group>

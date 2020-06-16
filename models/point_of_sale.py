@@ -22,6 +22,16 @@ class PosSession(models.Model):
                     raise ValidationError('La resolución se ha vencido, no puede abrir la sesión hasta ingresar una nueva resoución.')
 
         return super(PosSession, self).create(vals)
+        
+    def action_pos_session_close(self):
+        for session in self:
+            if ('iface_invoicing' in session.config_id.fields_get() and session.config_id.iface_invoicing) or ('module_account' in session.config_id.fields_get() and session.config_id.module_account):
+                for order in session.order_ids.filtered(lambda order: order.state != 'invoiced' and order.amount_total > 0):
+                    order.sudo().action_pos_order_invoice()
+                    order.invoice_id.sudo().action_invoice_open()
+                    order.account_move = order.invoice_id.move_id
+
+        res = super(PosSession, self).action_pos_session_close()
 
 class PosOrder(models.Model):
     _inherit = "pos.order"
