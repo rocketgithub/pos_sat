@@ -7,6 +7,7 @@
 
                 <t t-esc="order.name"/><br />
                 <t t-esc="widget.pos.config.name"/><br />
+                <t t-esc="widget.pos.sale_journal.nombre_establecimiento_gface"/><br />
                 <br />
                 <t t-esc="widget.pos.company.name"/><br />
                 <t t-if="receipt.header">
@@ -29,8 +30,8 @@
                 Fecha: <t t-esc="order.formatted_validation_date"/><br />
                 Usuario: <t t-esc="widget.pos.get_cashier().name"/><br />
                 <br />
-                NIT: <t t-esc="order.get_client().vat ? order.get_client().vat : ''"/><br />
-                Nombre: <t t-esc="order.get_client().name"/><br />
+                NIT: _______________________________<br />
+                Nombre: ____________________________<br />
                 <table class='receipt-orderlines'>
                     <colgroup>
                         <col width='40%' />
@@ -129,6 +130,7 @@
                 <br/>
                 <t t-esc="order.name"/><br />
                 <t t-esc="widget.pos.config.name"/><br />
+                <t t-esc="widget.pos.sale_journal.nombre_establecimiento_gface"/><br />
                 <br />
                 <t t-esc="widget.pos.company.name"/><br />
                 <t t-if="receipt.header">
@@ -151,8 +153,8 @@
                 Fecha: <t t-esc="order.formatted_validation_date"/><br />
                 Usuario: <t t-esc="widget.pos.get_cashier().name"/><br />
                 <br />
-                NIT: <t t-esc="order.get_client().vat ? order.get_client().vat : ''"/><br />
-                Nombre: <t t-esc="order.get_client().name"/><br />
+                NIT: _______________________________<br />
+                Nombre: ____________________________<br />
                 <table class='receipt-orderlines'>
                     <colgroup>
                         <col width='40%' />
